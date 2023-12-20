@@ -10,19 +10,18 @@
       <meta name="language" content="Việt Nam">
       
 
-      <link rel="shortcut icon" href="https://www.pngkey.com/png/detail/360-3601772_your-logo-here-your-company-logo-here-png.png" type="image/x-icon" />
-      <meta name="revisit-after" content="1 days" />
-      <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
-      <title>Nhật Khánh </title>
-      <meta name="description" content="Web phim của Nhật Khánh" />
+      <link rel="shortcut icon" href="" type="image/x-icon" />
+      <meta name="csrf-token" content="{{csrf_token() }}" />
+      <meta name='robots' content='indexfollow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+      <title>{{$getInfoWeb->title}}</title>
+      <meta name="description" content="{{$getInfoWeb->description}}" />
       <link rel="canonical" href="">
       <link rel="next" href="" />
       <meta property="og:locale" content="vi_VN" />
-      <meta property="og:title" content="Phim hay 2020 - Xem phim hay nhất" />
-      <meta property="og:description" content="Phim hay 2020 - Xem phim hay nhất, phim hay trung quốc, hàn quốc, việt nam, mỹ, hong kong , chiếu rạp" />
-      <meta property="og:url" content="" />
-      <meta property="og:site_name" content="Phim hay 2021- Xem phim hay nhất" />
-      <meta property="og:image" content="" />
+      <meta property="og:title" content="" />
+      <meta property="og:url" content="{{Request::url()}}" />
+      <meta property="og:site_name" content="{{$metaTitle}}" />
+      <meta property="og:image" content="{{$metaDescription}}" />
       <meta property="og:image:width" content="300" />
       <meta property="og:image:height" content="55" />
       <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -44,7 +43,9 @@
          <div class="container">
             <div class="row" id="headwrap">
                <div class="col-md-3 col-sm-6 slogan">
-                  <p class="site-title"><a class="logo" href="" title="phim hay ">Phim Hay</p>
+                  <p class=""><a class="logo" href="" title="{{$getInfoWeb->title}}">
+                        <img src="{{asset('upload/logo/'.$getInfoWeb->logo)}}"   alt="" width="100" height="85">
+                  </a></p>
                   </a>
                </div>
                <div class="col-md-5 col-sm-6 halim-search-form hidden-xs">
@@ -158,7 +159,7 @@
             <div class="row container">
                <div class="widget about col-xs-12 col-sm-4 col-md-4">
                   <div class="footer-logo">
-                     <img class="img-responsive" src="https://img.favpng.com/9/23/19/movie-logo-png-favpng-nRr1DmYq3SNYSLN8571CHQTEG.jpg" alt="Phim hay 2021- Xem phim hay nhất" />
+                     <img class="img-responsive" src="{{asset('upload/logo/'.$getInfoWeb->logo)}}"  alt="" style="width: 200px; height: 150px;" alt="Phim hay 2021- Xem phim hay nhất" />
                   </div>
                   Liên hệ QC: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e5958d8c888d849ccb868aa58288848c89cb868a88">[dh52005894@student.stu.edu.vn]</a>
                </div>

@@ -121,8 +121,11 @@
                         </ul>
                         <span class="total_rating">Đánh giá : {{$rating}}/{{$count_total}}lượt</span>
                       </ul>
- 
-                      <div class="movie-trailer hidden"></div>
+                        @php
+                        $current_url = Request::url();
+                        @endphp
+                      <div class="fb-like" data-href="{{$current_url}}" data-width="" 
+                      data-layout="" data-action="" data-size="" data-share="true"></div>
                    </div>
                 </div>
              </div>

@@ -50,8 +50,19 @@
       @foreach($categoryHome as $key => $cate_home)
        <section id="halim-advanced-widget-2">
           <div class="section-heading">
-             <a href="" title="{{$cate_home->title}}">
-             <span class="h-text">{{$cate_home->description}}</span>
+            <span class="h-text">{{$cate_home->description}}</span>
+             <a href="{{route('danhmuc',$cate_home->slug)}}" title="{{$cate_home->title}}">
+               <style type="text/css">
+                     .xemthem{
+                        position: absolute;
+                        right: 0;
+                        font-weight: 400;
+                        line-height: 21px;
+                        padding: 9px 25px 9px 10px;
+                        color: white;
+                     }
+               </style>
+               <span class="xemthem">Xem thêm &#8250;</span>
              </a>
           </div>
           <div id="halim-advanced-widget-2-ajax-box" class="halim_box">

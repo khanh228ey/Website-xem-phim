@@ -5,8 +5,10 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\EpisodeController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\InfoController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\UserController;
+use App\Models\info;
 use App\Models\Movie;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -50,6 +52,8 @@ Route::resource('genre', GenreController::class);
 Route::resource('country', CountryController::class);
 Route::resource('movie', MovieController::class);
 Route::resource('episode', EpisodeController::class);
+Route::resource('info', InfoController::class);
+
 
 //thay doi dữ liệu movie bằng ajax
 Route::get('/category-choose',[Movie::class,'categoryUpdate'])->name('categoryUpdate');

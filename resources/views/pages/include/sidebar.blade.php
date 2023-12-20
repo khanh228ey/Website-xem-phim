@@ -61,7 +61,7 @@
                      </div>
                      <p class="title">{{$viewThang->title}}</p>
                   </a>
-                  <div class="viewsCount" style="color: #9d9d9d;">{{$viewThang->Luotquantam}} Lượt quan tâm</div>
+                  <div class="viewsCount" style="color: #9d9d9d;">{{$viewThang->luotquantam}} Lượt quan tâm</div>
                   <div class="viewsCount" style="color: #9d9d9d;">Năm: {{$viewThang->year}} </div>
                   <div style="float: left;">
                      <ul class="list-inline rating" title="Averange Rating">

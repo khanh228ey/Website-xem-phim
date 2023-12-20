@@ -7,6 +7,9 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
+          <a class="nav-link" href="{{route('info.index')}}">Thông tin website</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="{{route('category.index')}}">Danh mục phim</a>
         </li>
         <li class="nav-item active">

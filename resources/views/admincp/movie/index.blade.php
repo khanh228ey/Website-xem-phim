@@ -16,10 +16,10 @@
         <th scope="col" >Thời lượng phim</th>
         <th scope="col">Số tập</th>
         <th scope="col">Chất lượng</th>
-        <th scope="col">Năm </th>
         <th scope="col">Danh mục</th>
         <th scope="col">Thể loại</th>
         <th scope="col">Quốc gia</th>
+        <th scope="col">Lượt Xem</th>
         <th scope="col">Phim hot</th>
         <th scope="col">Top view </th>
         <th scope="col">Manages</th>
@@ -49,7 +49,6 @@
               Trailer
           @endif
       </td>
-    <td>{{$mv->year}}</td>
     <td>{{$mv->category->title}}</td>
         <td>
             @foreach ($mv->movie_genre as $gen)
@@ -58,6 +57,7 @@
         </td>
 
         <td>{{$mv->country->title}}</td>
+        <td>{{$mv->luotxem}}</td>
         <td>
           @if ($mv->phimhot)
               Phim hot
