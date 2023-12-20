@@ -54,9 +54,6 @@
           <div class="text-center">
              <ul class='page-numbers'>
                {{$movie->links()}}
-                {{-- <li><span aria-current="page" class="page-numbers current"></span>{{$movie->links()}}</li> --}}
-                {{-- <li><a class="page-numbers" href="">2</a></li>
-                <li><a class="page-numbers" href="">3</a></li> --}}
              </ul>
           </div>
        </section>
