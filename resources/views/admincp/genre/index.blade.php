@@ -19,7 +19,7 @@
     <tbody>
         @foreach ($list as $key=>$cate)
       <tr>
-        <th scope="row">{{$cate->id}}</th>
+        <th scope="row">{{++$key}}</th>
         <td>{{$cate->title}}</td>
         <td>{{$cate->description}}</td>
         <td>{{$cate->slug}}</td>
@@ -42,7 +42,7 @@
   </table>
 </div>
 </div>
-    <a href="{{route('genre.create')}}"><button class="btn btn-success">Thêm danh mục</button></a>
+    <a href="{{route('genre.create')}}"><button class="btn btn-success">Thêm thể loại</button></a>
 </div>
 </div>
 

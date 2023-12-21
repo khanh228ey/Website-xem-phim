@@ -29,7 +29,7 @@
                 <div class="movie_info col-xs-12">
                    <div class="movie-poster col-md-3">
                       <img class="movie-thumb" src="{{asset('upload/movie/'.$getMovie->image)}}" alt="{{$getMovie->title}}">
-                       @if($getMovie->resolution != 5 && isset($episode))
+                       @if($episode != 0 && $getMovie->resolution != 5)
                          {{-- xemm phim --}}
                       <div class="bwa-content">
                         <div class="loader"></div>
@@ -68,10 +68,10 @@
                        @if($getMovie->phude == 1)<span class="episode"><i class="fa fa-play" aria-hidden="true"></i>Vietsub</span> @endif 
                         @if($getMovie->thuocphim == 2)
                            <li class="list-info-group-item"><span>Loại phim</span> : Phim bộ</li>
-                           <li class="list-info-group-item"><span>Thời lượng</span> : {{$getMovie->sotap}} Tập</li>
+                           <li class="list-info-group-item"><span>Thời lượng</span> : {{$getMovie->duration}}</li>
                            @else
                            <li class="list-info-group-item"><span>Loại phim</span> : Phim Lẻ</li>
-                           <li class="list-info-group-item"><span>Thời lượng</span> : {{$getMovie->duration}}</li>
+                           <li class="list-info-group-item"><span>Thời lượng</span> : {{$getMovie->sotap}} Tập</li>
                         @endif
                           
                          <li class="list-info-group-item"><span>Thể loại</span> : 
@@ -242,5 +242,6 @@
        </section>
     </main>
     <aside id="sidebar" class="col-xs-12 col-sm-12 col-md-4"></aside>
+    
  </div>
  @endsection

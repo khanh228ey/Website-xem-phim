@@ -93,7 +93,7 @@ class MovieController extends Controller
             }
             $movie->save();
             $movie->movie_genre()->attach($data['genre']);
-            $list = Movie::with('category','movie_genre','country')->withCount('episode')->orderBy('id','DESC')->paginate(10);
+            $list = Movie::with('category','movie_genre','country')->withCount('episode')->orderBy('ngayTao','DESC')->paginate(10);
             toastr()->success('Thành công','Thêm phim thành công');
             return view('admincp.movie.index',compact('list'));
        
@@ -170,7 +170,7 @@ class MovieController extends Controller
         }
         $movie->save();
         $movie->movie_genre()->sync($data['genre']);
-        $list = Movie::with('category','movie_genre','country')->withCount('episode')->orderBy('id','DESC')->paginate(10);
+        $list = Movie::with('category','movie_genre','country')->withCount('episode')->orderBy('ngayUpdate','DESC')->paginate(10);
         toastr()->success('Cập nhật','Cập nhật thành công');
         return view('admincp.movie.index',compact('list','movie'));
     }

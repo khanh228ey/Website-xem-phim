@@ -53,7 +53,7 @@ class IndexController extends Controller
         $getEpisode = Episode::with('movie')->where('movie_id',$getMovie->id)->orderBy('sotap','DESC')->take(3)->GET();
         $movieRelated = Movie::with('category')->where('category_id',$getMovie->category->id)->orderBy(DB::raw('RAND()'))->whereNotIn('slug',[$slug])->limit(8)->Get();
         $episodeFirst = Episode::with('movie')->where('movie_id',$getMovie->id)->orderBy('sotap','ASC')->TAKE(1)->first();
-        $episode = Episode::with('movie')->where('movie_id',$getMovie->id)->orderBy('sotap','ASC')->get();
+        $episode = Episode::with('movie')->where('movie_id',$getMovie->id)->orderBy('sotap','ASC')->count();
         $getRating = Rating::where('movie_id',$getMovie->id)->avg('rating');
         $rating = round($getRating);
         $count_total = Rating::where('movie_id',$getMovie->id)->count();

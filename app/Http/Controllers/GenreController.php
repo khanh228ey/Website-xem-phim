@@ -50,6 +50,7 @@ class GenreController extends Controller
     public function show(string $id)
     {
         //
+        
     }
 
     /**

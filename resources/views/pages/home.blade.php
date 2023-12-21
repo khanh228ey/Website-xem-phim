@@ -102,6 +102,7 @@
        @endforeach
     </main>
   @include('pages.include.sidebar')
+  @include('pages.include.banner')
  </div>
 </div>
 @endsection
