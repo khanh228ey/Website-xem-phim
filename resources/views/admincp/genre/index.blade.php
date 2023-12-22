@@ -1,10 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.app1')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Danh sách thể loại') }}</div>
+<br>
+<br>
 <table class="table" id="tablephim">
     <thead>
       <tr>

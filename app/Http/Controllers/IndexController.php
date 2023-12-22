@@ -20,7 +20,6 @@ class IndexController extends Controller
     //
     public function home(){
         $info = Info::find(1);
-        
         $categoryHome = Category::with('movie')->WHERE('status',1)->orderBy('id','ASC')->limit(16)->Get();
         return view('pages.home',compact('categoryHome'));
     }
