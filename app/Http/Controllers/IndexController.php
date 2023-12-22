@@ -26,7 +26,7 @@ class IndexController extends Controller
 
     public function getCategory($slug){
         $cateSlug = Category::where('slug',$slug)->first();
-        $movie = Movie::where('category_id',$cateSlug->id)->paginate(40);
+        $movie = Movie::where('category_id',$cateSlug->id)->paginate(20);
         return view('pages.category',compact('cateSlug','movie'));
     }
 
@@ -37,13 +37,13 @@ class IndexController extends Controller
         foreach($movieGenre as $mvGenre){
             $manyGenre[] = $mvGenre->movie_id;
         }
-        $movie = Movie::whereIn('id',$manyGenre)->orderBy('ngayUpdate','DESC')->paginate(40);
+        $movie = Movie::whereIn('id',$manyGenre)->orderBy('ngayUpdate','DESC')->paginate(20);
         return view('pages.genre',compact('genreSlug','movie'));
     }
 
     public function getCountry($slug){
         $countrySlug = Country::where('slug',$slug)->first();
-        $movie = Movie::where('country_id',$countrySlug->id)->paginate(40);
+        $movie = Movie::where('country_id',$countrySlug->id)->paginate(20);
         return view('pages.country',compact('countrySlug','movie'));
     }
 
@@ -82,7 +82,7 @@ class IndexController extends Controller
     public function searchMovie(){
         if(isset($_GET['search'])){
             $search = $_GET['search'];
-            $movie = Movie::where('title','LIKE','%'.$search.'%')->orderBy('ngayUpdate','DESC')->paginate(40);
+            $movie = Movie::where('title','LIKE','%'.$search.'%')->orderBy('ngayUpdate','DESC')->paginate(20);
             return view('pages.search',compact('search','movie'));
         }
         else{

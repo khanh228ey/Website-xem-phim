@@ -14,6 +14,7 @@ use Carbon\Carbon;
 use Illuminate\Console\View\Components\Alert;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\View;
 
 use function Laravel\Prompts\alert;
 

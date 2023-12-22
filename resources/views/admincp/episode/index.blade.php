@@ -27,7 +27,8 @@
         <td>{{$episode->movie->title}}</td>
         <td><img  src="{{asset('upload/movie/'.$episode->movie->image)}}"  alt="" style="width: 200px; height: 150px;"></td>
         <td>Tập: {{$episode->sotap}}</td>
-        <td>{!!$episode->link_phim!!}</td> 
+        <td> <iframe width="560" height="315" src="{{$episode->link_phim}}" title="YouTube video player" frameborder="0" 
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></td> 
         <td>
           {!! Form::open(['method' => 'DELETE', 'route' => ['episode.destroy', $episode->id], 'onsubmit' => 'return confirm("Xóa hay không?")']) !!}
           {!! Form::submit('Xóa', ['class' => 'btn btn-danger']) !!}

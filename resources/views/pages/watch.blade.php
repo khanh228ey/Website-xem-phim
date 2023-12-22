@@ -23,7 +23,8 @@
                }
             </style>
             <div  class="iframe_phim" style="" >
-                {!! $getEpisode->link_phim !!}
+                <iframe width="560" height="315" src="{{$getEpisode->link_phim}}" title="YouTube video player" frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                </div>
              <div class="button-watch">
                 <ul class="halim-social-plugin col-xs-4 hidden-xs">

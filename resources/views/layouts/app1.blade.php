@@ -4,6 +4,7 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+@if(Auth::check())
 <!DOCTYPE html>
 <html>
   <head>
@@ -122,7 +123,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   </head>
 
   <body class="cbp-spmenu-push">
-    @if(Auth::check())
     <div class="main-content">
       <div
         class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left"
@@ -145,11 +145,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <span class="icon-bar"></span>
               </button>
               <h1>
-                <a class="navbar-brand" href="index.html"
-                  ><span class="fa fa-area-chart"></span> Glance<span
-                    class="dashboard_text"
-                    >Design dashboard</span
-                  ></a
+                <a class="navbar-brand" href="{{route('home')}}"
+                  ><span class="fa fa-area-chart"></span>Administrator></a
                 >
               </h1>
             </div>
@@ -531,7 +528,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                       ><img src="images/2.jpg" alt="" />
                     </span>
                     <div class="user-name">
-                      <p>Admin Name</p>
+                      <p>{{ Auth::user()->name }}</p>
                       <span>Administrator</span>
                     </div>
                     <i class="fa fa-angle-down lnr"></i>
@@ -550,7 +547,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <a href="#"><i class="fa fa-suitcase"></i> Profile</a>
                   </li>
                   <li>
-                    <a href=""><i class="fa fa-sign-out"></i> Logout</a>
+                      <a href=""><i class="fa fa-sign-out"></i> Logout</a>
                   </li>
                 </ul>
               </li>
@@ -567,10 +564,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           <div class="col_3">
             <div class="col-md-3 widget widget1">
               <div class="r3_counter_box">
-                <i class="pull-left fa fa-dollar icon-rounded"></i>
+                <i class="pull-left fa fa-laptop icon-rounded"></i>
                 <div class="stats">
-                  <h5><strong>$452</strong></h5>
-                  <span>Total Revenue</span>
+                  <span>Phim được thêm trong tháng:</span><br>
+                  <b>{{$movieCreateMonth}}</b>
                 </div>
               </div>
             </div>
@@ -578,26 +575,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               <div class="r3_counter_box">
                 <i class="pull-left fa fa-laptop user1 icon-rounded"></i>
                 <div class="stats">
-                  <h5><strong>$1019</strong></h5>
-                  <span>Online Revenue</span>
+                  <span>Lượt xem trong tháng :</span><br>
+                  <b>{{$totalViewsThisMonth}}</b>
                 </div>
               </div>
             </div>
             <div class="col-md-3 widget widget1">
               <div class="r3_counter_box">
-                <i class="pull-left fa fa-money user2 icon-rounded"></i>
+                <i class="pull-left fa fa-film user2 icon-rounded"></i>
                 <div class="stats">
-                  <h5><strong>$1012</strong></h5>
-                  <span>Expenses</span>
+                  <span>Tổng phim:</span>
+                  <h5><strong>{{$movieTotal}}</strong></h5>
                 </div>
               </div>
             </div>
             <div class="col-md-3 widget widget1">
               <div class="r3_counter_box">
-                <i class="pull-left fa fa-pie-chart dollar1 icon-rounded"></i>
+                <i class="pull-left fa fa-film dollar1 icon-rounded"></i>
                 <div class="stats">
-                  <h5><strong>$450</strong></h5>
-                  <span>Expenditure</span>
+                  <span>Tổng tập phim :</span>
+                  <h5><strong>{{$episodeTotal}}</strong></h5>
                 </div>
               </div>
             </div>
@@ -1150,74 +1147,4 @@ function ChangeToSlug()
         let table = new DataTable('#tablephim');
 </script>
 </html>
-@else
-<div class="container">
-  <div class="row justify-content-center">
-      <div class="col-md-8">
-          <div class="card">
-              <div class="card-header">{{ __('Login') }}</div>
-
-              <div class="card-body">
-                  <form method="POST" action="{{ route('login') }}">
-                      @csrf
-
-                      <div class="row mb-3">
-                          <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                          <div class="col-md-6">
-                              <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                              @error('email')
-                                  <span class="invalid-feedback" role="alert">
-                                      <strong>{{ $message }}</strong>
-                                  </span>
-                              @enderror
-                          </div>
-                      </div>
-
-                      <div class="row mb-3">
-                          <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                          <div class="col-md-6">
-                              <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                              @error('password')
-                                  <span class="invalid-feedback" role="alert">
-                                      <strong>{{ $message }}</strong>
-                                  </span>
-                              @enderror
-                          </div>
-                      </div>
-
-                      <div class="row mb-3">
-                          <div class="col-md-6 offset-md-4">
-                              <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                  <label class="form-check-label" for="remember">
-                                      {{ __('Remember Me') }}
-                                  </label>
-                              </div>
-                          </div>
-                      </div>
-
-                      <div class="row mb-0">
-                          <div class="col-md-8 offset-md-4">
-                              <button type="submit" class="btn btn-primary">
-                                  {{ __('Login') }}
-                              </button>
-
-                              @if (Route::has('password.request'))
-                                  <a class="btn btn-link" href="{{ route('password.request') }}">
-                                      {{ __('Forgot Your Password?') }}
-                                  </a>
-                              @endif
-                          </div>
-                      </div>
-                  </form>
-              </div>
-          </div>
-      </div>
-  </div>
-</div>
 @endif

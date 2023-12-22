@@ -6,6 +6,7 @@ use App\Models\Episode;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\View;
 
 class EpisodeController extends Controller
 {
