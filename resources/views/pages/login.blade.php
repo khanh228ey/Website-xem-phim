@@ -11,6 +11,8 @@
     <!-- link icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" integrity="sha512-ZnR2wlLbSbr8/c9AgLg3jQPAattCUImNsae6NHYnS9KrIwRdcY9DxFotXhNAKIKbAXlRnujIqUWoXXwqyFOeIQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <script src="https://apis.google.com/js/api:client.js"></script>
     <title>Login</title>
 </head>
 
@@ -21,38 +23,39 @@
                 <h3>Đăng nhập</h3>
                 <span>sử dụng tài khoản của bạn</span>
 
-                {!! Form::open(['route'=>'loginUser','method'=>'POST', 'enctype' => 'multipart/form-data','id'=>'form_input'])!!}
+                <form action="#" id="form_input" method="POST">
                     <div class="type">
-                        <input type="text" placeholder="Tên đăng nhập" name="email" id="email">
+                        <input type="text" placeholder="Tên đăng nhập" name="txtuser" id="email">
 
                     </div>
                     <div class="type">
-                        <input type="password" placeholder="Mật khẩu" name="password" id="password">
+                        <input type="password" placeholder="Mật khẩu" name="txtpass" id="password">
 
                     </div>
-                    <div>{{isset($failed)? $failed:""}}</div>
+
                     <div class="forgot">
-                        <a href=""><span>Quên mật khẩu</span></a>
+                        <span>Quên mật khẩu</span>
                     </div>
-                    {!! Form::submit('Đăng nhập',['class'=>'btn bkg'])!!}
-                    {!! Form::close('')!!}
+                    <button type="submit" name="submit" class="btn bkg">Đăng nhập</button>
+                    </form><br>
+                    <a href="{{route('loginGoogle')}}"><button  class="btn bkg">Đăng nhập Google</button></a><br>
+                    <a href=""><button  class="btn bkg">Đăng nhập facebook</button></a>
             </div>
 
             <div class="form sign_up">
                 <h3>Đăng kí</h3>
                 <span>tạo tài khoản bằng email</span>
 
-                <form action="" id="form_input" method="POST">
+                <form action="form sign_up" id="form_input" method="POST">
                     <div class="type">
 
-                        <input type="text" name="hoten" placeholder="Họ tên" id="name">
+                        <input type="text" name="hoten" placeholder="Họ tên" id="hoten">
                     </div>
                     <div class="type">
 
                         <input type="email" name="email" placeholder="Email" id="email">
                     </div>
                     <div class="type">
-
                         <input type="password" name="pass" placeholder="Mật khẩu" id="pass">
                     </div>
                     <div class="type">

@@ -74,7 +74,7 @@
                   </div>
                </div>
                <div class="col-md-4 hidden-xs">
-                  <a href="{{route('login')}}"><div id="get-bookmark" class=""><span>Đăng nhập/Đăng ký</span></div></a>
+                  <a href="{{route('dangnhap')}}"><div id="get-bookmark" class=""><span>Đăng nhập/Đăng ký</span></div></a>
                   <div id="bookmark-list" class="hidden bookmark-list-on-pc">
                      <ul style="margin: 0;"></ul>
                   </div>

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Country;
+use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Validator;
 
 class CountryController extends Controller
 {
@@ -23,7 +25,7 @@ class CountryController extends Controller
     public function create()
     {
         //
-        return view('admincp.country.form');
+        return view('admincp.country.add');
 
     }
 
@@ -88,8 +90,14 @@ class CountryController extends Controller
     public function destroy(string $id)
     {
         //
-        Country::find($id)->delete();
         $list = Country::all();
+        $isUsedInMovies = Movie::where('country_id', $id)->exists();
+
+        if ($isUsedInMovies) {
+        toastr()->error('Không thể xóa', 'Quốc Gia đang được sử dụng trong bảng Movies');
+        return view('admincp.country.index',compact('list'));
+    }
+        Country::find($id)->delete();
         toastr()->success('Xóa','Xóa  thành công');
         return view('admincp.country.index',compact('list'));
     }

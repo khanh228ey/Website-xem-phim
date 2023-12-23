@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Genre;
+use App\Models\Movie;
+use App\Models\Movie_Genre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
@@ -24,7 +26,7 @@ class GenreController extends Controller
     public function create()
     {
         //
-        return view('admincp.genre.form');
+        return view('admincp.genre.add');
     }
 
     /**
@@ -89,9 +91,22 @@ class GenreController extends Controller
     public function destroy(string $id)
     {
         //
-        genre::find($id)->delete();
         $list = genre::all();
+        $isUsedInMovies = Movie_Genre::where('genre_id', $id)->exists();
+        $isUsedInMovies1 = Movie::where('genre_id', $id)->exists();
+
+        if ($isUsedInMovies ) {
+        toastr()->error('Không thể xóa', 'Thể loại đang được sử dụng trong bảng Movies');
+        return view('admincp.genre.index',compact('list'));
+        
+    }
+        if ($isUsedInMovies1) {
+            toastr()->error('Không thể xóa', 'Thể loại đang được sử dụng trong bảng Movies');
+            return view('admincp.genre.index',compact('list'));
+        }else{
+        genre::find($id)->delete();
         toastr()->success('Xóa','Xóa  thành công');
         return view('admincp.genre.index',compact('list'));
+        }
     }
 }

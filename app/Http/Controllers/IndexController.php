@@ -99,10 +99,14 @@ class IndexController extends Controller
             $getMovie = Movie::with('category','genre','country','movie_genre','episode')->where('slug',$slug)->first();
             $movieRelated = Movie::with('category')->where('category_id',$getMovie->category->id)->orderBy(DB::raw('RAND()'))->whereNotIn('slug',[$slug])->limit(8)->Get();
             $getEpisode = Episode::where('movie_id',$getMovie->id)->where('sotap',$tapphim)->first();
-            $demLuotxem = $getMovie->luotxem;
-            $tangLuotXem = $demLuotxem + 1;
-            $getMovie->luotxem = $tangLuotXem;
-            $getMovie->save();
+            // $demLuotxem = $getMovie->luotxem;
+            // $tangLuotXem = $demLuotxem + 1;
+            // $getMovie->luotxem = $tangLuotXem;
+            // $getMovie->save();
+            $demLuotXem = $getEpisode->luotxem;
+            $tangLuotXem = $demLuotXem + 1;
+            $getEpisode->luotxem = $tangLuotXem;
+            $getEpisode->save();
             return view('pages.watch',compact('getMovie','movieRelated','getEpisode','tapphim'));
     }
     public function episode(){ $categoryHome = Category::orderBy('id','ASC')->WHERE('status',1)->get();

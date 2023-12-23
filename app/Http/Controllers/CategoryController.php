@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Validator;
 use Illuminate\Support\Facades\View;
@@ -91,8 +92,15 @@ class CategoryController extends Controller
     public function destroy(string $id)
     {
         //
-        Category::find($id)->delete();
+        
         $list = Category::all();
+        $isUsedInMovies = Movie::where('category_id', $id)->exists();
+
+        if ($isUsedInMovies) {
+        toastr()->error('Không thể xóa', 'Danh mục đang được sử dụng trong bảng Movies');
+        return view('admincp.category.index',compact('list'));
+    }
+        Category::find($id)->delete();
         toastr()->success('Xóa','Xoá danh mục thành công');
         return view('admincp.category.index',compact('list'));
     }

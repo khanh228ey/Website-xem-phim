@@ -13,17 +13,4 @@ class UserController extends Controller
         return view('pages.login');
     }
 
-
-    public function userLogin(Request $request){
-        $data = $request->all();
-        $getUser = User::where('email',$data['email'])->where('password',$data['password'])->get();
-        $checkUser = User::where('email',$data['email'])->where('password',$data['password'])->count();
-        if($checkUser == 0){
-            $failed = "Thông tin tài khoản mật khẩu không chính xác";
-            return view('pages.login',compact('failed'));
-        }
-            return view('pages.home',compact('getUser'));
-        
-
-        }
 }

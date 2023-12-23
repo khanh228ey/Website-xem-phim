@@ -32,15 +32,15 @@ class AppServiceProvider extends ServiceProvider
         $monthStart = now()->startOfMonth(); // Lấy ngày đầu tiên của tháng hiện tại
         $monthEnd = now()->endOfMonth();     // Lấy ngày cuối cùng của tháng hiện tại
         $moviesAddedThisMonth = Movie::whereBetween('ngayTao', [$monthStart, $monthEnd])->count();
-        $totalViewsThisMonth = Movie::whereBetween('ngayTao', [$monthStart, $monthEnd])->sum('luotxem');
+        $totalViewsThisMonth = Episode::whereBetween('updated_at', [$monthStart, $monthEnd])->sum('luotxem');
         $movieTotal = Movie::all()->count();
         $episodeTotal = Episode::all()->count();
 
 
         //pages
         $categoryNav = Category::orderBy('id','ASC')->WHERE('status',1)->Get();
-        $genre = Genre::orderBy('id','DESC')->GET();
-        $country = Country::orderBy('id','DESC')->GET();
+        $genre = Genre::orderBy('id','DESC')->WHERE('status',1)->GET();
+        $country = Country::orderBy('id','DESC')->WHERE('status',1)->GET();
         $hotMovie = Movie::orderBy('ngayUpdate','DESC')->where('phimhot',1)->limit(20)->get();
         $getViewTuan = Movie::where('topview',1)->orderBy('ngayUpdate','DESC')->limit(15)->GET();
         $getViewThang = Movie::where('topview',2)->orderBy('ngayUpdate','DESC')->limit(15)->GET();

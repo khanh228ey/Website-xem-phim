@@ -58,7 +58,7 @@
         </td>
 
         <td>{{$mv->country->title}}</td>
-        <td>{{$mv->luotxem}}</td>
+        <td>{{$mv->total_views}}</td>
         <td>
           @if ($mv->phimhot)
               Phim hot

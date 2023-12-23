@@ -157,7 +157,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               <ul class="sidebar-menu">
                 <li class="header">Quản trị Admin</li>
                 <li class="treeview">
-                  <a href="">
+                  <a href="{{route('home')}}">
                     <i class="fa fa-bars"></i> <span>Menu</span>
                   </a>
                 </li>
@@ -602,8 +602,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               <div class="r3_counter_box">
                 <i class="pull-left fa fa-users dollar2 icon-rounded"></i>
                 <div class="stats">
-                  <h5><strong>1450</strong></h5>
                   <span>Total Users</span>
+                  <h5><strong>1450</strong></h5>
                 </div>
               </div>
             </div>

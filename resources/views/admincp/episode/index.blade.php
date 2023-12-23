@@ -16,6 +16,7 @@
         <th scope="col">Tên phim</th>
         <th scope="col">Hình ảnh</th>
         <th scope="col">Tập</th>
+        <th scope="col">Lượt xem</th>
         <th scope="col">Link phim</th>
         <th scope="col">Manages</th>
       </tr>
@@ -27,6 +28,7 @@
         <td>{{$episode->movie->title}}</td>
         <td><img  src="{{asset('upload/movie/'.$episode->movie->image)}}"  alt="" style="width: 200px; height: 150px;"></td>
         <td>Tập: {{$episode->sotap}}</td>
+        <td>{{$episode->luotxem}}</td>        
         <td> <iframe width="560" height="315" src="{{$episode->link_phim}}" title="YouTube video player" frameborder="0" 
           allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></td> 
         <td>

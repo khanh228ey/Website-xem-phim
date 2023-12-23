@@ -8,6 +8,7 @@ use App\Models\Episode;
 use App\Models\Genre;
 use App\Models\Movie;
 use App\Models\Movie_Genre;
+use App\Models\Rating;
 use Illuminate\Http\Request;
 
 use Carbon\Carbon;
@@ -26,7 +27,18 @@ class MovieController extends Controller
     public function index()
     {
         //
-        $list = Movie::with('category','movie_genre','country')->withCount('episode')->orderBy('id','DESC')->paginate(10);
+        // $list = Movie::with('category','movie_genre','country','episode')
+        // ->withCount('episode')
+        // ->selectRaw('movie.*, SUM(episode.luotXem) as total_views')
+        // ->groupBy('movie.id')
+        // ->orderBy('id','DESC')->paginate(10);
+        $list = Movie::selectRaw('movies.*, SUM(episodes.luotXem) as total_views')
+                ->with('category', 'movie_genre', 'country', 'episode')
+                ->withCount('episode')
+                ->leftJoin('episodes', 'movies.id', '=', 'episodes.movie_id') // Chỉnh sửa tên cột kết nối
+                ->groupBy('movies.id')
+                ->orderBy('movies.id', 'DESC')
+                ->paginate(10);
         $listJson = Movie::with('category','movie_genre','country')->orderBy('id','DESC')->GET();
         $path = public_path()."/jsonFile";
         if(!is_dir($path)){
@@ -94,7 +106,13 @@ class MovieController extends Controller
             }
             $movie->save();
             $movie->movie_genre()->attach($data['genre']);
-            $list = Movie::with('category','movie_genre','country')->withCount('episode')->orderBy('ngayTao','DESC')->paginate(10);
+            $list = Movie::selectRaw('movies.*, SUM(episodes.luotXem) as total_views')
+                ->with('category', 'movie_genre', 'country', 'episode')
+                ->withCount('episode')
+                ->leftJoin('episodes', 'movies.id', '=', 'episodes.movie_id') // Chỉnh sửa tên cột kết nối
+                ->groupBy('movies.id')
+                ->orderBy('movies.ngayTao', 'DESC')
+                ->paginate(10);
             toastr()->success('Thành công','Thêm phim thành công');
             return view('admincp.movie.index',compact('list'));
        
@@ -171,7 +189,13 @@ class MovieController extends Controller
         }
         $movie->save();
         $movie->movie_genre()->sync($data['genre']);
-        $list = Movie::with('category','movie_genre','country')->withCount('episode')->orderBy('ngayUpdate','DESC')->paginate(10);
+        $list = Movie::selectRaw('movies.*, SUM(episodes.luotXem) as total_views')
+                ->with('category', 'movie_genre', 'country', 'episode')
+                ->withCount('episode')
+                ->leftJoin('episodes', 'movies.id', '=', 'episodes.movie_id') // Chỉnh sửa tên cột kết nối
+                ->groupBy('movies.id')
+                ->orderBy('movies.ngayUpdate', 'DESC')
+                ->paginate(10);
         toastr()->success('Cập nhật','Cập nhật thành công');
         return view('admincp.movie.index',compact('list','movie'));
     }
@@ -193,6 +217,8 @@ class MovieController extends Controller
         Movie_Genre::whereIn('movie_id',[$movie->id])->delete();
         //xoa tap phim
         Episode::whereIn('movie_id',[$movie->id])->delete();
+        //Xoa danh gia
+        Rating::whereIn('movie_id',[$movie->id])->delete();
          $movie->delete();
          $list = Movie::with('category','movie_genre','country')->withCount('episode')->orderBy('id','DESC')->paginate(10);     
          toastr()->success('Xóa','Xóa  thành công');

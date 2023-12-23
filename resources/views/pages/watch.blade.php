@@ -43,7 +43,7 @@
                    </div>
                    <div id="report" class="halim-switch"><i class="hl-attention"></i> Report</div>
                    <div class="luotxem"><i class="hl-eye"></i>
-                      <span>1K</span> lượt xem 
+                      <span>{{$getEpisode->luotxem}}</span> lượt xem 
                    </div>
                    <div class="luotxem">
                       <a class="visible-xs-inline" data-toggle="collapse" href="#moretool" aria-expanded="false" aria-controls="moretool"><i class="hl-forward"></i> Share</a>
