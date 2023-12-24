@@ -237,6 +237,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <a href="{{route('movie.index')}}"
                           ><i class="fa fa-angle-right"></i>Danh sách phim</a>
                       </li>
+                      <li>
+                        <a href="{{route('leechMovie')}}"
+                          ><i class="fa fa-angle-right"></i>Leech Movie</a>
+                      </li>
                     </ul>
                   </li>
                 </li>

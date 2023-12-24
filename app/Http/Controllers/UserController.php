@@ -12,5 +12,4 @@ class UserController extends Controller
     public function pageLogin(){
         return view('pages.login');
     }
-
 }

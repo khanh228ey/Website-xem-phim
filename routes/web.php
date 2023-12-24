@@ -6,6 +6,8 @@ use App\Http\Controllers\EpisodeController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\InfoController;
+use App\Http\Controllers\LeechMovieController;
+use App\Http\Controllers\loginFBController;
 use App\Http\Controllers\loginGoogleController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\UserController;
@@ -58,10 +60,17 @@ Route::resource('info', InfoController::class);
 //thay doi dữ liệu movie bằng ajax
 Route::get('/category-choose',[Movie::class,'categoryUpdate'])->name('categoryUpdate');
 
-//login google
+//login google và login facebook
 Route::get('dang-nhap',[UserController::class,'pageLogin'])->name('dangnhap');
 Route::get('auth/google', [loginGoogleController::class, 'redirectToGoogle'])->name('loginGoogle');
 Route::get('auth/google/callback', [loginGoogleController::class, 'handleGoogleCallback']);
+
+Route::get('auth/facebook', [loginFBController::class, 'facebookRedirect'])->name('loginFacebook');
+Route::get('auth/facebook/callback', [loginFBController::class, 'loginWithFacebook']);
+
+// leech movie
+Route::get('leech-movie',[LeechMovieController::class,'leechMovie'])->name('leechMovie');
+
 
 
 
