@@ -39,7 +39,15 @@
              <article class="col-md-3 col-sm-3 col-xs-6 thumb grid-item post-27021">
                 <div class="halim-item">
                    <a class="halim-thumb" href="{{route('phim',$mv->slug)}}" title="{{$mv->title}}">
-                      <figure><img class="lazy img-responsive" src="{{asset('upload/movie/'.$mv->image)}}" alt="{{$mv->title}}" title="{{$mv->title}}"></figure>
+                     @php
+                        $imageCheck = substr($mv->image,0,5);
+                           @endphp
+                     @if ($imageCheck == "https")
+                     <figure><img class="lazy img-responsive" src="{{$mv->image}}" alt="{{$mv->title}}" title="{{$mv->title}}"></figure>
+                    @else
+                    <figure><img class="lazy img-responsive" src="{{asset('upload/movie/'.$mv->image)}}" alt="{{$mv->title}}" title="{{$mv->title}}"></figure>
+                    @endif
+                      
                       <span class="status"> 
                         @if ($mv->resolution == 0)
                      HD

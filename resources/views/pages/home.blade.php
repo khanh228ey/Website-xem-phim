@@ -15,7 +15,15 @@
          <article class="thumb grid-item post-38498">
             <div class="halim-item">
                <a class="halim-thumb" href="{{route('phim',$hot->slug)}}" title="{{$hot->title}}">
-                  <figure><img class="lazy img-responsive" src="{{asset('upload/movie/'.$hot->image)}}" alt="{{$hot->title}}" title="{{$hot->title}}"></figure>
+                  @php
+            $imageCheck = substr($hot->image,0,5);
+               @endphp
+         @if ($imageCheck == "https")
+         <figure><img class="lazy img-responsive" src="{{$hot->image}}" alt="{{$hot->title}}" title="{{$hot->title}}"></figure>
+        @else
+        <figure><img class="lazy img-responsive" src="{{asset('upload/movie/'.$hot->image)}}" alt="{{$hot->title}}" title="{{$hot->title}}"></figure>
+        @endif
+                  
                   <span class="status">@if ($hot->resolution == 0)
                      HD
                  @elseif($hot->resolution == 1)
@@ -102,7 +110,7 @@
        @endforeach
     </main>
   @include('pages.include.sidebar')
-  @include('pages.include.banner')
+  {{-- @include('pages.include.banner') --}}
  </div>
 </div>
 @endsection

@@ -13,6 +13,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta
       name="keywords"
       content="Admin Website xem phim"
@@ -28,6 +29,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <link href="{{asset('admin/css/style.css')}}" rel="stylesheet" type="text/css" />
     <!-- font-awesome icons CSS -->
     <link href="{{asset('admin/css/font-awesome.css')}}" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 
     <!-- //font-awesome icons CSS-->
     <!-- side nav css file -->
@@ -162,6 +164,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                   </a>
                 </li>
                 <li class="treeview active">
+                  <a href="">
+                    <i class="fa fa-laptop"></i>
+                    <span>Thông tin website</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li>
+                      <a href=""
+                        ><i class="fa fa-angle-right"></i>Thông tin web</a
+                      >
+                    </li>
+                    <li>
+                      <a href="{{route('sortMovie')}}"
+                        ><i class="fa fa-angle-right"></i>Sắp sếp giao diện</a>
+                    </li>
+                  </ul>
+                </li>
+              </li>
+                <li class="treeview active">
                     <a href="">
                       <i class="fa fa-laptop"></i>
                       <span>Danh mục</span>
@@ -237,6 +258,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <a href="{{route('movie.index')}}"
                           ><i class="fa fa-angle-right"></i>Danh sách phim</a>
                       </li>
+                      
                       <li>
                         <a href="{{route('leechMovie')}}"
                           ><i class="fa fa-angle-right"></i>Leech Movie</a>
@@ -1098,6 +1120,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   </body>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script type="text/javascript">
 // Hàm tạo slug
 function ChangeToSlug()
@@ -1149,6 +1172,39 @@ function ChangeToSlug()
         })
         //link DataTable
         let table = new DataTable('#tablephim');
+
+  //     //sap xep
+  //     $( function() {
+  //   $( "#sortable_navbar" ).sortable({
+  //     placeholder: "ui-state-highlight"
+  //   });
+  //   $( "#sortable_navbar" ).disableSelection();
+  // } );
+
+  //   $(function(){
+  //     $('#sortable_navbar').sortable({
+  //       placeholder:"ui-state-highlight",
+  //       update:function(event,ui){
+  //         var array_id =[];
+  //         $('.category_position li').each(function(){
+  //           array_id.push($this(this).attr('id'));
+  //         })
+  //         $.ajax({
+  //           headers: {
+  //             'X-CRSF-TOKEN' :$('meta[name="crsf-token"]').attr('content')
+  //           },
+  //           url:{{route('resorting_navbar')}},
+  //           method:"POST",
+  //           data:{array_id:array_id},
+  //           success:function(data){
+  //             alert('Sắp xếp thứ tự menu thành công');
+  //           }
+  //         })
+  //       }
+  //     });
+  //   })
+
+
 </script>
 </html>
 @endif

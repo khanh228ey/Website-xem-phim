@@ -96,9 +96,11 @@ class CountryController extends Controller
         if ($isUsedInMovies) {
         toastr()->error('Không thể xóa', 'Quốc Gia đang được sử dụng trong bảng Movies');
         return view('admincp.country.index',compact('list'));
-    }
+    }else{
         Country::find($id)->delete();
         toastr()->success('Xóa','Xóa  thành công');
         return view('admincp.country.index',compact('list'));
+    }
+        
     }
 }

@@ -28,7 +28,15 @@
                 </div>
                 <div class="movie_info col-xs-12">
                    <div class="movie-poster col-md-3">
-                      <img class="movie-thumb" src="{{asset('upload/movie/'.$getMovie->image)}}" alt="{{$getMovie->title}}">
+                     @php
+                        $imageCheck = substr($getMovie->image,0,5);
+                           @endphp
+                     @if ($imageCheck == "https")
+                     <img class="movie-thumb" src="{{$getMovie->image}}" alt="{{$getMovie->title}}">
+                    @else
+                    <img class="movie-thumb" src="{{asset('upload/movie/'.$getMovie->image)}}" alt="{{$getMovie->title}}">
+                    @endif
+                      
                        @if($episode != 0 && $getMovie->resolution != 5)
                          {{-- xemm phim --}}
                       <div class="bwa-content">
@@ -150,9 +158,19 @@
          <div class="entry-content htmlwrap clearfix">
            <div class="video-item halim-entry-box ">
                  <article class="item-content" >
-                  <iframe width="100%" height="315" src="https://www.youtube.com/embed/{{$getMovie->trailer}}" title="Trailer {{$getMovie->title}}" frameborder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                   allowfullscreen></iframe>
+                  @php
+                        $trailerCheck = substr($getMovie->trailer,0,5);
+                           @endphp
+                     @if ($trailerCheck == "https")
+                     <iframe width="100%" height="315" src="{{$getMovie->trailer}}" title="Trailer {{$getMovie->title}}" frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                         allowfullscreen></iframe>
+                    @else
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/{{$getMovie->trailer}}" title="Trailer {{$getMovie->title}}" frameborder="0" 
+                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen></iframe>
+                    @endif
+                  
                  </article>
            </div>
          </div>

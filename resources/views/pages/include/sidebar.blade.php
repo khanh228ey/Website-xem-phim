@@ -25,7 +25,15 @@
                <div class="item post-37176">
                   <a href="{{route('phim',$viewTuan->slug)}}" title="{{$viewTuan->title}}">
                      <div class="item-link">
-                        <img src="{{asset('upload/movie/'.$viewTuan->image)}}" class="lazy post-thumb" alt="" title="{{$viewTuan->title}}" />
+                        @php
+                        $imageCheck = substr($viewTuan->image,0,5);
+                           @endphp
+                     @if ($imageCheck == "https")
+                     <img src="{{$viewTuan->image}}" class="lazy post-thumb" alt="" title="{{$viewTuan->title}}" />
+                    @else
+                    <img src="{{asset('upload/movie/'.$viewTuan->image)}}" class="lazy post-thumb" alt="" title="{{$viewTuan->title}}" />
+                    @endif
+                        
                         <span class="is_trailer">Trailer</span>
                      </div>
                      <p class="title">{{$viewTuan->title}}</p>
@@ -56,7 +64,14 @@
                <div class="item post-37176">
                   <a href="{{route('phim',$viewThang->slug)}}" title="{{$viewThang->title}}">
                      <div class="item-link">
-                        <img src="{{asset('upload/movie/'.$viewThang->image)}}" class="lazy post-thumb" alt="" title="{{$viewThang->title}}" />
+                        @php
+                        $imageCheck = substr($viewThang->image,0,5);
+                           @endphp
+                     @if ($imageCheck == "https")
+                     <img src="{{$viewThang->image}}" class="lazy post-thumb" alt="" title="{{$viewThang->title}}" />
+                    @else
+                    <img src="{{asset('upload/movie/'.$viewThang->image)}}" class="lazy post-thumb" alt="" title="{{$viewThang->title}}" />
+                    @endif
                         <span class="is_trailer">Trailer</span>
                      </div>
                      <p class="title">{{$viewThang->title}}</p>
@@ -87,7 +102,15 @@
                <div class="item post-37176">
                   <a href="{{route('phim',$viewQuy->slug)}}" title="{{$viewQuy->title}}">
                      <div class="item-link">
-                        <img src="{{asset('upload/movie/'.$viewQuy->image)}}" class="lazy post-thumb" alt="" title="{{$viewQuy->title}}" />
+                        @php
+                        $imageCheck = substr($viewQuy->image,0,5);
+                           @endphp
+                     @if ($imageCheck == "https")
+                     <img src="{{$viewQuy->image}}" class="lazy post-thumb" alt="" title="{{$viewQuy->title}}" />
+                    @else
+                    <img src="{{asset('upload/movie/'.$viewQuy->image)}}" class="lazy post-thumb" alt="" title="{{$viewQuy->title}}" />
+                    @endif
+                       
                         <span class="is_trailer">Trailer</span>
                      </div>
                      <p class="title">{{$viewQuy->title}}</p>

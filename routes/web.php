@@ -41,6 +41,9 @@ Route::get('them-tap-phim/{id}', [EpisodeController::class,'addEpisode'])->name(
 Route::get('/locphim', [EpisodeController::class,'addEpisode'])->name('locphim');
 
 Route::post('/rating', [EpisodeController::class,'addRating'])->name('add-rating');
+Route::get('sort-movie', [MovieController::class,'sortMovie'])->name('sortMovie');
+Route::post('resorting-navbar', [MovieController::class,'resortingNavbar'])->name('resorting_navbar');
+
 
 
 
@@ -70,6 +73,7 @@ Route::get('auth/facebook/callback', [loginFBController::class, 'loginWithFacebo
 
 // leech movie
 Route::get('leech-movie',[LeechMovieController::class,'leechMovie'])->name('leechMovie');
+Route::get('add-movie/{slug}',[LeechMovieController::class,'addMovie'])->name('addMovie');
 
 
 

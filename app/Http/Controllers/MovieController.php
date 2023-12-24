@@ -230,4 +230,16 @@ class MovieController extends Controller
         $movie->category_id = $data['categoryID'];
         $movie->save();
     }
+    public function sortMovie(){
+        $category = Category::orderBy('id','DESC')->GET();
+        return view('admincp.thongtinwebsite.sort',compact('category'));
+    }
+    public function resortingNavbar(Request $request){
+        $data = $request->all();
+        foreach($data['array_id'] as $key =>$value){
+            $category = Movie::find($value);
+            $category->position = $key;
+            $category->save();
+        }
+    }
 }

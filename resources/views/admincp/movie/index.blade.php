@@ -32,7 +32,14 @@
       <tr>
         <th scope="row">{{++$key}}</th>
         <td>{{$mv->title}}</td>
-        <td><img  src="{{asset('upload/movie/'.$mv->image)}}"  alt="" style="width: 200px; height: 150px;"></td>
+        @php
+            $imageCheck = substr($mv->image,0,5);
+        @endphp
+        @if ($imageCheck == "https")
+            <td><img src="{{$mv->image}}" alt="" style="width: 200px; height: 150px;"></td>
+        @else
+            <td><img  src="{{asset('upload/movie/'.$mv->image)}}"  alt="" style="width: 200px; height: 150px;"></td>
+        @endif
         <td >{{$mv->duration}}</td>
         <td >{{$mv->episode_count}}/{{$mv->sotap}} Tập</td>
         <td>
