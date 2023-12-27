@@ -29,7 +29,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <link href="{{asset('admin/css/style.css')}}" rel="stylesheet" type="text/css" />
     <!-- font-awesome icons CSS -->
     <link href="{{asset('admin/css/font-awesome.css')}}" rel="stylesheet" />
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
 
     <!-- //font-awesome icons CSS-->
     <!-- side nav css file -->
@@ -1120,7 +1120,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   </body>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
 <script type="text/javascript">
 // Hàm tạo slug
 function ChangeToSlug()
@@ -1171,39 +1171,7 @@ function ChangeToSlug()
          });
         })
         //link DataTable
-        let table = new DataTable('#tablephim');
-
-  //     //sap xep
-  //     $( function() {
-  //   $( "#sortable_navbar" ).sortable({
-  //     placeholder: "ui-state-highlight"
-  //   });
-  //   $( "#sortable_navbar" ).disableSelection();
-  // } );
-
-  //   $(function(){
-  //     $('#sortable_navbar').sortable({
-  //       placeholder:"ui-state-highlight",
-  //       update:function(event,ui){
-  //         var array_id =[];
-  //         $('.category_position li').each(function(){
-  //           array_id.push($this(this).attr('id'));
-  //         })
-  //         $.ajax({
-  //           headers: {
-  //             'X-CRSF-TOKEN' :$('meta[name="crsf-token"]').attr('content')
-  //           },
-  //           url:{{route('resorting_navbar')}},
-  //           method:"POST",
-  //           data:{array_id:array_id},
-  //           success:function(data){
-  //             alert('Sắp xếp thứ tự menu thành công');
-  //           }
-  //         })
-  //       }
-  //     });
-  //   })
-
+        let table = new DataTable('#tablephim'); 
 
 </script>
 </html>

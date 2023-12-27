@@ -63,8 +63,13 @@ Route::resource('info', InfoController::class);
 //thay doi dữ liệu movie bằng ajax
 Route::get('/category-choose',[Movie::class,'categoryUpdate'])->name('categoryUpdate');
 
-//login google và login facebook
+
+//lOGIN USER
 Route::get('dang-nhap',[UserController::class,'pageLogin'])->name('dangnhap');
+
+Route::post('/login_user', [UserController::class,'login'])->name('login1');
+
+//login google và login facebook
 Route::get('auth/google', [loginGoogleController::class, 'redirectToGoogle'])->name('loginGoogle');
 Route::get('auth/google/callback', [loginGoogleController::class, 'handleGoogleCallback']);
 
@@ -74,6 +79,10 @@ Route::get('auth/facebook/callback', [loginFBController::class, 'loginWithFacebo
 // leech movie
 Route::get('leech-movie',[LeechMovieController::class,'leechMovie'])->name('leechMovie');
 Route::get('add-movie/{slug}',[LeechMovieController::class,'addMovie'])->name('addMovie');
+// Route::get('leech-episode',[LeechMovieController::class,'leechEpisode'])->name('leechEpisode');
+// Route::get('add-episode/{slug}',[LeechMovieController::class,'addEpisode'])->name('addEpisode');
+
+
 
 
 

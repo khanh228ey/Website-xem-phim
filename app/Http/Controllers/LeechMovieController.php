@@ -53,7 +53,7 @@ class LeechMovieController extends Controller
             $movie->category_id = $category->id;
             $genre = Genre::orderby('id','DESC')->FIRST();
             $movie->genre_id = $genre->id;
-            $country = Country::orderby('id','DESC')->FIRST();
+            $country = Country::orderby('id','DESC')->first();
             $movie->country_id = $country->id;
             $movie->phimhot = 0;
             $movie->ngayTao = Carbon::now('Asia/Ho_Chi_Minh');
@@ -66,4 +66,13 @@ class LeechMovieController extends Controller
         
     }
     }
+    
+    // public function leechEpisode(){
+
+    // }
+    // public function addEpisode(){
+    //     $resp = Http::withOptions(['verify' => false])->get("https://ophim1.com//phim".$slug);
+    //         // $data = $resp->json();
+    //     return view('admincp.movie.leechmovie',compact('resp'));
+    // }
 }

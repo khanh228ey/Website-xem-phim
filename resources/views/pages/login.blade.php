@@ -23,21 +23,24 @@
                 <h3>Đăng nhập</h3>
                 <span>sử dụng tài khoản của bạn</span>
 
-                <form action="#" id="form_input" method="POST">
+                {{-- <form action="{{route('login1')}}" id="form_input" method="POST"> --}}
+                    {!! Form::open(['route'=>'login1','method'=>'POST','id'=>'form_input'])!!}
                     <div class="type">
-                        <input type="text" placeholder="Tên đăng nhập" name="txtuser" id="email">
+                        <input type="text" placeholder="Tên đăng nhập" name="email" id="email">
 
                     </div>
                     <div class="type">
-                        <input type="password" placeholder="Mật khẩu" name="txtpass" id="password">
+                        <input type="password" placeholder="Mật khẩu" name="pass" id="password">
 
                     </div>
 
                     <div class="forgot">
                         <span>Quên mật khẩu</span>
                     </div>
-                    <button type="submit" name="submit" class="btn bkg">Đăng nhập</button>
-                    </form><br>
+                    {{-- <button type="submit" name="submit" class="btn bkg">Đăng nhập</button> --}}
+                    {!! Form::submit('Đăng nhập',['class'=>'btn bkg'])!!}
+                    {!! Form::close('')!!}
+                    {{-- </form><br> --}}
                     <a href="{{route('loginGoogle')}}"><button  class="btn bkg">Đăng nhập Google</button></a><br>
                     <a href=""><button  class="btn bkg">Đăng nhập facebook</button></a>
             </div>

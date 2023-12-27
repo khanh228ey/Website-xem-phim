@@ -74,7 +74,19 @@
                   </div>
                </div>
                <div class="col-md-4 hidden-xs">
-                  <a href="{{route('dangnhap')}}"><div id="get-bookmark" class=""><span>Đăng nhập/Đăng ký</span></div></a>
+                  @if(Auth::check())
+                     <li class="mega dropdown">
+                     <a  id="get-bookmark" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">{{Auth::user()->name }}<span class="caret"></span></a>
+                     {{-- <a href="{{route('dangnhap')}}"><div id="get-bookmark" class=""><span>Đăng nhập</span></div></a> --}}
+                     <ul class="dropdown-menu">
+                        {!! Form::open(['route'=>'logout','method'=>'POST'])!!}
+                        {!! Form::submit('Logout',['class'=>''])!!}
+                        {!! Form::close('')!!}
+                    </ul>
+                  </li>
+                  @else
+                  <a href="{{route('login')}}"><div id="get-bookmark" class=""><span>Đăng nhập</span></div></a>
+                  @endif
                   <div id="bookmark-list" class="hidden bookmark-list-on-pc">
                      <ul style="margin: 0;"></ul>
                   </div>
