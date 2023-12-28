@@ -58,6 +58,7 @@ Route::resource('country', CountryController::class);
 Route::resource('movie', MovieController::class);
 Route::resource('episode', EpisodeController::class);
 Route::resource('info', InfoController::class);
+Route::resource('user',UserController::class);
 
 
 //thay doi dữ liệu movie bằng ajax

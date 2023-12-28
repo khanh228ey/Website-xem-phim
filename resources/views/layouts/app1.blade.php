@@ -4,7 +4,7 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
-@if(Auth::check())
+@if(Auth::user()->role_id == 2)
 <!DOCTYPE html>
 <html>
   <head>
@@ -178,6 +178,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <li>
                       <a href="{{route('sortMovie')}}"
                         ><i class="fa fa-angle-right"></i>Sắp sếp giao diện</a>
+                    </li>
+                    <li>
+                      <a href="{{route('user.index')}}"
+                        ><i class="fa fa-angle-right"></i>Thông tin khách hàng</a>
                     </li>
                   </ul>
                 </li>
@@ -573,7 +577,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <a href="#"><i class="fa fa-suitcase"></i> Profile</a>
                   </li>
                   <li>
-                      <a href=""><i class="fa fa-sign-out"></i> Logout</a>
+                      {{-- <a href=""><i class="fa fa-sign-out"></i> Logout</a> --}}
+                      {!! Form::open(['route'=>'logout','method'=>'POST'])!!}
+                      {!! Form::submit('Logout',['class'=>'fa fa-sign-out'])!!}
+                      {!! Form::close('')!!}
                   </li>
                 </ul>
               </li>
@@ -628,8 +635,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               <div class="r3_counter_box">
                 <i class="pull-left fa fa-users dollar2 icon-rounded"></i>
                 <div class="stats">
-                  <span>Total Users</span>
-                  <h5><strong>1450</strong></h5>
+                  <span>Tổng thành viên</span>
+                  <h5><strong>{{$userTotal}}</strong></h5>
                 </div>
               </div>
             </div>
@@ -1175,4 +1182,6 @@ function ChangeToSlug()
 
 </script>
 </html>
+@else 
+<script>window.location = "{{ route('homepages') }}";</script>
 @endif

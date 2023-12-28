@@ -183,9 +183,29 @@
       <script type='text/javascript' src='{{asset('js/owl.carousel.min.js?ver=5.7.2')}}' id='carousel-js'></script>
      <script type="text/javascript">
          //popup quảng cáo
-         $(window).on('load',function(){
-            $('#exampleModalCenter').modal('show');
-         });
+         // $(window).on('load',function(){
+         //    $('#exampleModalCenter').modal('show');
+         // });
+//          $(document).ready(function () {
+//     function showModal() {
+//         $('#exampleModalCenter').modal('show');
+//     }
+
+//     setTimeout(function () {
+//         showModal();
+//     }, 5000); // Hiển thị modal sau mỗi 5 giây
+// });
+
+$(document).ready(function () {
+    function showModal() {
+        $('#exampleModalCenter').modal('show');
+    }
+
+    // Sử dụng setInterval để hiển thị modal sau mỗi 5 giây
+    setInterval(function () {
+        showModal();
+    }, 5000);
+});
 
          
          //thanh top views

@@ -8,6 +8,7 @@ use App\Models\Episode;
 use App\Models\Genre;
 use App\Models\Info;
 use App\Models\Movie;
+use App\Models\User;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -35,6 +36,7 @@ class AppServiceProvider extends ServiceProvider
         $totalViewsThisMonth = Episode::whereBetween('updated_at', [$monthStart, $monthEnd])->sum('luotxem');
         $movieTotal = Movie::all()->count();
         $episodeTotal = Episode::all()->count();
+        $userTotal = User::all()->count();
 
 
         //pages
@@ -65,7 +67,8 @@ class AppServiceProvider extends ServiceProvider
             'movieTotal' => $movieTotal,
             'episodeTotal' => $episodeTotal,
             'movieCreateMonth' => $moviesAddedThisMonth ,
-            'totalViewsThisMonth' => $totalViewsThisMonth      
+            'totalViewsThisMonth' => $totalViewsThisMonth,
+            'userTotal' => $userTotal,     
         ]);
     }
 }

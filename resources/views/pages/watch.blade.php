@@ -144,5 +144,10 @@
             </section>
     </main>
     @include('pages.include.sidebar')
+   @if(Auth::check())
+   <p></p>
+   @else 
+   @include('pages.include.banner')
+   @endif
  </div>
  @endsection
