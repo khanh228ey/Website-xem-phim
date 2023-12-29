@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\EpisodeController;
 use App\Http\Controllers\GenreController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\LeechMovieController;
@@ -50,6 +51,9 @@ Route::post('resorting-navbar', [MovieController::class,'resortingNavbar'])->nam
 //route dang nhap admin
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::get('/trang-quan-ly', [HomeController::class, 'viewAdmin'])->name('viewAdmin');
 
 //route admin
 Route::resource('category', CategoryController::class);

@@ -25,7 +25,11 @@
         <td>{{$user->role->role}}</td>
         <td>
             {!! Form::close()!!}
+            @if($user->role_id != 3)
             <a href="{{route('user.edit',$user->id)}}" class="btn btn-warning">Sửa</a>
+            @else
+            <a href="" class="btn btn-warning">Xem thông tin</a>
+            @endif
         </td>
       </tr>
       @endforeach

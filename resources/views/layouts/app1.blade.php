@@ -4,7 +4,7 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
-@if(Auth::user()->role_id == 2)
+@if(Auth::user()->role_id != 1)
 <!DOCTYPE html>
 <html>
   <head>
@@ -181,7 +181,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </li>
                     <li>
                       <a href="{{route('user.index')}}"
-                        ><i class="fa fa-angle-right"></i>Thông tin khách hàng</a>
+                        ><i class="fa fa-angle-right"></i>Danh sách khách hàng</a>
                     </li>
                   </ul>
                 </li>
@@ -571,7 +571,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <a href="#"><i class="fa fa-cog"></i> Settings</a>
                   </li>
                   <li>
-                    <a href="#"><i class="fa fa-user"></i> My Account</a>
+                    <a href="{{route('homepages')}}"><i class="fa fa-user"></i>Home Page</a>
                   </li>
                   <li>
                     <a href="#"><i class="fa fa-suitcase"></i> Profile</a>

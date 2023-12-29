@@ -28,7 +28,9 @@ class UserController extends Controller
             $user = User::find($id);
             $user->name =$data['name'];
             $user->email =$data['email'];
+            if(Auth::user()->role_id == 3){
             $user->role_id = $data['role_id'];
+            }
             $user->updated_at = Carbon::now('Asia/Ho_Chi_Minh');
             $user->save();
             // $getUser = User::with('role')->where('updated_at','DESC')->get();

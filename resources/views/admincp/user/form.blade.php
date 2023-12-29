@@ -26,10 +26,12 @@
                     {!! Form::label('Họ tên','hoten',[])!!}
                     {!! Form::text('email',isset($user) ? $user->email:'',['class'=>'form-control','placeholder'=>'Nhập vào dữ liệu...','pattern' => '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'])!!}
                  </div>
+                 @if(Auth::user()->role_id == 3)
                  <div class="form-group">
                     {!! Form::label('role_id','Vai trò',[])!!}
                     {!! Form::select('role_id',$role,isset($user)? $user->role_id:'',['class'=>'form-control'])!!}
                  </div>
+                 @endif
                  @if (!isset($user))
                      {!! Form::submit('Thêm dữ liệu',['class'=>'btn btn-success'])!!}
                  @else

@@ -82,6 +82,9 @@
                         {!! Form::open(['route'=>'logout','method'=>'POST'])!!}
                         {!! Form::submit('Logout',['class'=>''])!!}
                         {!! Form::close('')!!}
+                        @if(Auth::user()->role_id != 1)
+                        <a href="{{route('viewAdmin')}}">Trang quản trị</a>
+                        @endif
                     </ul>
                   </li>
                   @else
